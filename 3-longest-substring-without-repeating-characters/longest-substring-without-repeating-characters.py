@@ -35,8 +35,6 @@ class Solution(object):
                     l += 1
                 l += 1
                 temp = r - l + 1
-                # if temp == 1:
-                #     my_dict = {}
                 r += 1
         return max(temp, n)
                 
