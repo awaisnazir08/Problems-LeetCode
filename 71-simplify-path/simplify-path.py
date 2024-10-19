@@ -12,7 +12,6 @@ class Solution(object):
             if item == '/' and len(stack) > 0 and stack[-1] == '/':
                     while len(stack) != 0 and stack[-1] == '/': 
                         stack.pop()
-                # stack.append(item)
             elif item == '.' and stack[-1] == '/':
                 dot_counter += 1
             elif item == '.' and dot_counter == 1:
