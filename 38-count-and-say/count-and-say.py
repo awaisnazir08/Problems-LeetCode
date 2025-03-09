@@ -22,7 +22,6 @@ class Solution(object):
                     left = j
                     current_count = 1
 
-            # if current_count > 1 or left == 0:
             current_string += str(current_count)
             current_string += to_count[-1]
 
