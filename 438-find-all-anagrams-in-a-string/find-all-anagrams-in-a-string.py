@@ -7,14 +7,12 @@ class Solution(object):
         :rtype: List[int]
         """
         p_dict = {}
-        # p_set = set()
         s_dict = {}
         indices = []
         for letter in p:
             if letter not in p_dict:
                 p_dict[letter] = 0
             p_dict[letter] += 1
-            # p_set.add(letter)
         window_size = len(p)
         for i in range(len(s)):
             if i - window_size >= 0:
