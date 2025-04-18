@@ -7,19 +7,9 @@ class Solution(object):
         """
 
         k = k % len(nums)
-
-        # for i in range(k):
-        #     last = nums[-1]
-        #     for j in range(len(nums) - 1, 0, -1):
-        #         nums[j] = nums[j - 1] 
-        #     nums[0] = last
         i = 0
         current_element = nums[i]
         unique = set()
-        # unique.add(i)
-        # new_position = (i + k) % len(nums)
-        # current_element = nums[new_position]
-        # nums[new_position] = nums[i]
 
         while True:
             new_position = (i + k) % len(nums)
