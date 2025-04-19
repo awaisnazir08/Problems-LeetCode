@@ -24,8 +24,6 @@ class Solution(object):
                 inside_string = inside_string*number
                 for j in inside_string:
                     stack.append(j)
-                # if stack:
-                #     stack.pop()
         string = ''
         number = ''
         while stack:
