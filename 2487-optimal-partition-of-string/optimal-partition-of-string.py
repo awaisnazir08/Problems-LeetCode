@@ -15,6 +15,7 @@ class Solution(object):
                 partitions += 1
                 map = {}
                 map[element] = 1
+
         if map:
             partitions += 1
         
