@@ -7,6 +7,7 @@
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
+        # Inorder DFS
         def dfs(node, currentSum):
             if not node:
                 return False
