@@ -1,24 +1,29 @@
 from collections import deque
-from typing import List
-
 class Solution:
     def reachableNodes(self, n: int, edges: List[List[int]], restricted: List[int]) -> int:
-        dictionary = {i: [] for i in range(n)}
-        restricted_set = set(restricted)
+        dictionary = {}
+        visited = set(restricted)
+        q = deque()
+        q.append(0)
 
-        for u, v in edges:
-            dictionary[u].append(v)
-            dictionary[v].append(u)
-
-        visited = set(restricted)  # mark restricted nodes as visited
-        q = deque([0])
+        for edge in edges:
+            n1, n2 = edge
+            if n1 not in dictionary:
+                dictionary[n1] = []
+            if n2 not in dictionary:
+                dictionary[n2] = []
+            dictionary[n1].append(n2)
+            dictionary[n2].append(n1)
         visited.add(0)
-
+        
         while q:
             node = q.popleft()
-            for neighbor in dictionary[node]:
-                if neighbor not in visited:
-                    visited.add(neighbor)
-                    q.append(neighbor)
+            visited.add(node)
+            for adjacent_node in dictionary[node]:
+                if adjacent_node not in visited:
+                    q.append(adjacent_node)
+        
+        return len(visited) - len(restricted)
 
-        return len(visited) - len(restricted)  # subtract restricted nodes
+        
+        
