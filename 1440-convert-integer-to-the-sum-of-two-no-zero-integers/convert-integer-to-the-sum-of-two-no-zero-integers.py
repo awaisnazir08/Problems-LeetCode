@@ -11,8 +11,10 @@ class Solution(object):
                     return False
                 num //= 10
             return True
-            
+        
+        b = n - 1
         for i in range(1, n):
-            j = n - i
-            if isNoZero(i) and isNoZero(j):
-                return [i, j]
+            
+            if isNoZero(i) and isNoZero(b):
+                return [i, b]
+            b -= 1
