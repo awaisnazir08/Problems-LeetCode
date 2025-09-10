@@ -13,6 +13,8 @@ class Solution(object):
             person_lang[i + 1] = language
         
         to_teach = set()
+
+        # this is the trick
         for f1, f2 in friendships:
             l1 = person_lang[f1]
             l2 = person_lang[f2]
