@@ -11,6 +11,7 @@ class Solution(object):
             if num == val:
                 nums[i] = 1000
                 n -= 1
+        
         nums.sort()
         return n
             
