@@ -10,7 +10,6 @@ class MyHashSet(object):
         :rtype: None
         """
         self.s.add(key)
-
         
 
     def remove(self, key):
