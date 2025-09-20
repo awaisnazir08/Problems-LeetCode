@@ -1,33 +1,28 @@
-class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        top = 0
-        bottom = len(matrix) - 1
-
-        while top <= bottom:
-            middle = (top + bottom) // 2
-
-            if matrix[middle][0] < target and matrix[middle][-1] > target:
-                break
-            elif matrix[middle][0] == target or matrix[middle][-1] == target:
-                return True
-            elif matrix[middle][0] > target:
-                bottom = middle - 1
-            else:
-                top = middle + 1
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
         
-        row = (top + bottom) // 2
+        low = 0
 
-        start = 0
-        end = len(matrix[0]) - 1 
+        n = len(matrix)
+        m = len(matrix[0])
 
-        while start <= end:
-            middle = (start + end) // 2
+        high = (n*m - 1)
 
-            if matrix[row][middle] == target:
+        while low <= high:
+            mid = (low + high) // 2
+
+            mr, mc = mid // m, mid % m
+
+            if matrix[mr][mc] == target:
                 return True
-            elif matrix[row][middle] < target:
-                start = middle + 1
+            elif matrix[mr][mc] < target:
+                low = mid + 1
             else:
-                end = middle - 1
+                high = mid - 1
         
         return False
