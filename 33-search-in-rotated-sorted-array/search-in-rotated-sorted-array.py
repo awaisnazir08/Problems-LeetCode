@@ -1,18 +1,5 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        def binarySearch(left, center, right):
-            if left == right:
-                return left if nums[left] == target else -1
-            elif nums[left] == target:
-                return left
-            elif nums[right] == target:
-                return right
-            elif nums[center] == target:
-                return center
-            elif nums[left] < target < nums[center]:
-                return binarySearch(left, int((left + center) / 2), center)
-            else:
-                return binarySearch(min(right, center + 1), int((center + 1 + right) / 2), right)
 
         l = 0
         r = len(nums) - 1
@@ -26,7 +13,29 @@ class Solution:
             return c
 
         if nums[l] <= target <= nums[c]:
-            return binarySearch(l, int((l + c)/2), c)
+            l = l
+            r = c - 1
+            c = (l + r) // 2
         else:
-            return binarySearch(min(r, c + 1), int((c + 1 + r)/2), r)
+            l = c + 1
+            c = (l + r) // 2
+            r = r
+        
+        if nums[c] == target:
+            return c
+
+        while l <= r:
+            c = (l + r) // 2
+            if nums[c] == target:
+                return c
+            
+            if target < nums[c]:
+                r = c - 1
+            else:
+                l = c + 1
+        
+        return -1
+        
+
+
 
