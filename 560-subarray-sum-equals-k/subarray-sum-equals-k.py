@@ -10,7 +10,7 @@ class Solution(object):
         }
         sum = 0
         for i in range(len(nums)):
-            sum += nums[i]
+            sum += nums[i]  # prefix sum
             diff = sum - k
             if diff in my_dict:
                 result += my_dict[diff]
