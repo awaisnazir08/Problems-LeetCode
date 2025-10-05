@@ -12,5 +12,4 @@ class Solution:
             else:
                 res.append(int(op))
         
-
         return sum(res) if res else 0
