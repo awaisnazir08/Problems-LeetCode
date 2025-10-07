@@ -16,7 +16,7 @@ class Solution(object):
 
             for pile in piles:
                 current_hours += math.ceil(pile / float(middle))
-                if current_hours > h:  # optimization: stop early
+                if current_hours > h: 
                     break
 
             if current_hours <= h:
