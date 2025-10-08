@@ -13,6 +13,7 @@ class Solution:
                     right = middle - 1
                 else:
                     left = middle + 1
+    
             if potions[middle] * spell >= success:
                 res.append(len(potions) - middle)
             else:
