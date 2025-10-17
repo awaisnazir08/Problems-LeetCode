@@ -1,43 +1,38 @@
-class Solution(object):
-    def exist(self, board, word):
-        """
-        :type board: List[List[str]]
-        :type word: str
-        :rtype: bool
-        """
-        row, col = len(board), len(board[0])
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        rows = len(board)
+        cols = len(board[0])
 
-        def checkrange(i, j):
-            if i < 0 or j < 0:
-                return False
-            elif (i > row - 1) or (j > col - 1):
-                return False
-            return True
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
-        def possible_moves(i, j):
-            return [(i + 1, j), (i - 1, j), (i, j + 1 ), (i, j - 1)]
-
-        def backtrack(parents):
-            if (len(parents) == len(word)):
+        def dfs(node, path, visited):
+            if len(path) == len(word):
                 return True
-            current_i, current_j = parents[-1]
-            moves = possible_moves(current_i, current_j)
-
-            for move in moves:
-                if move not in parents and checkrange(move[0], move[1]):
-                    if board[move[0]][move[1]] == word[len(parents)]:
-                        new_parents = parents + [(move)]
-                        if backtrack(new_parents):
+            r, c = node[0], node[1]
+            for dr, dc in directions:
+                row = dr + r
+                col = dc + c
+                if 0 <= row < rows and 0 <= col < cols and (row, col) not in visited:
+                    if word[len(path)] == board[row][col]:
+                        path.append(board[row][col])
+                        visited.add((row, col))
+                        if dfs((row, col), path, visited):
                             return True
-
-
+                        visited.remove((row, col))
+                        path.pop(0)
             
-
-        for i in range(len(board)):
-            for j in range(len(board[0])):
+            return False
+        
+        for i in range(rows):
+            for j in range(cols):
                 if board[i][j] == word[0]:
-                    if backtrack([(i, j)]):
+                    if dfs((i, j), [board[i][j]], {(i, j)}):
                         return True
+        
         return False
 
+
+
+
+                
         
