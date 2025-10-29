@@ -4,10 +4,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        c = n
-        while True:
-            bc = bin(c)[2:]
-            if bc.count('0') == 0:
-                return c
-            c += 1
+        power = 1
+        while 2 ** power <= n:
+            power += 1
+        return 2 ** power - 1
         
