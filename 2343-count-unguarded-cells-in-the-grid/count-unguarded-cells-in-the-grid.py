@@ -12,7 +12,6 @@ class Solution(object):
 
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
-
         def mark(guard):
             i, j = guard
 
