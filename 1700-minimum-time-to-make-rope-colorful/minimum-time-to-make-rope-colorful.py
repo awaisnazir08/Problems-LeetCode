@@ -8,25 +8,19 @@ class Solution(object):
 
         n = len(colors)
 
-        l = 0
+        current = neededTime[0]
 
-        r = 0
         res = 0
 
-        current = 0
-        while r < n:
-            if colors[r] == colors[l]:
-                current = max(neededTime[l], neededTime[r], current)
-                res += neededTime[r]
+        for i in range(1, n):
+            if colors[i] == colors[i - 1]:
+                res += min(current, neededTime[i])
+                current = max(current, neededTime[i])
             else:
-                res -= current
-                l = r
-                current = 0
-                current = max(neededTime[l], neededTime[r])
-                res += neededTime[r]
-            r += 1
+                current = neededTime[i]
         
-        return res - current
+        return res
+                
 
 
                 
