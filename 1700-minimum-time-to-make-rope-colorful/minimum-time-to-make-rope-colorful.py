@@ -22,7 +22,7 @@ class Solution(object):
                 res -= current
                 l = r
                 current = 0
-                current = max(neededTime[l], neededTime[r], current)
+                current = max(neededTime[l], neededTime[r])
                 res += neededTime[r]
             r += 1
         
