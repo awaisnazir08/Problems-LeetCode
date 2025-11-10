@@ -11,7 +11,7 @@ class Solution(object):
             while stack and stack[-1] > num:
                 stack.pop()
             
-            if num > 0 and (not stack or num > stack[-1]):
+            if num > 0 and (not stack or stack[-1] < num):
                 res += 1
                 stack.append(num)
         return res
