@@ -27,6 +27,6 @@ class Solution(object):
         
         max_value = max(scores)
 
-        indices = [i for i, x in enumerate(scores) if x == max_value]
+        indices = [i for i in range(len(scores)) if scores[i] == max_value]
         return indices
         
