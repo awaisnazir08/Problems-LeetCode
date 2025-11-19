@@ -12,6 +12,5 @@ class Solution:
             else:
                 ans = max(ans, len(res))
                 
-        
         return max(ans, len(res))
 
