@@ -23,7 +23,7 @@ class Solution(object):
         
         covered_x = set()
         for key, value in map_x.items():
-            value.sort(key=lambda x: x[1])
+            value.sort(key=lambda x: x[1])  # why opposite
             value.pop(0)
             if value:
                 value.pop(-1)
