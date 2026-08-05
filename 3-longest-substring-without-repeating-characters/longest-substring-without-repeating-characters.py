@@ -4,29 +4,23 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        map = {}
+        
+        left = 0
+        max_length = 0
+        freq = {}
 
-        l = 0
-        res = 0
+        for right in range(len(s)):
+            freq[s[right]] = freq.get(s[right], 0) + 1
 
-        for r in range(len(s)):
-            map[s[r]] = map.get(s[r], 0) + 1
-
-            h = max(map.values())
-
-            if h == 1:
-                res = max(res, r - l + 1)
+            if freq[s[right]] == 1:
+                max_length = max(max_length, right - left + 1)
             else:
-                while h > 1:
-                    map[s[l]] -= 1
-                    l += 1
-                    h = max(map.values())
-            
+                while left < right and freq[s[right]] > 1:
+                    freq[s[left]] -= 1
+                    left += 1
+                max_length = max(max_length, right - left + 1)
         
-        return res
-
-                
+        return max_length
 
 
 
-        
